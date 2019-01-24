@@ -1,0 +1,17 @@
+<script>
+    function sum(value) {
+        var sum = value;
+
+
+        function nestedSum(nextValue) {
+            sum += nextValue;
+            return nestedSum;
+        }
+        nestedSum.toString = function() {
+            return sum;
+        };
+        return nestedSum;
+    }
+
+    alert(sum(1)(2)(4))
+</script>
