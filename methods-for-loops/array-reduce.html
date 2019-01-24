@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Тег meta для указания кодировки -->
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+<p>Hi!</p>
+
+<script>
+    arr = [1, 2, 4, 3, 5];
+
+    function getSums(arr) {
+        sumArray = [arr[0]];
+        arr.reduce(function (prevValue, current, index) {
+            return sumArray[index] = prevValue + current
+        });
+        return sumArray;
+    }
+
+    /*
+    function getSums(arr) {
+  var result = [];
+  if (!arr.length) return result;
+
+  var totalSum = arr.reduce(function(sum.html, item) {
+    result.push(sum.html);
+    return sum.html + item;
+  });
+  result.push(totalSum);
+
+  return result;
+}
+    *
+    */
+    alert(arr);
+    alert(getSums(arr));
+</script>
+
+<p>...Конец документа</p>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,11 @@
+<script>
+    const user = {};
+    user.name = 'Vasia';
+    user.surname = 'Petrov';
+    user['name'] = 'Sergey';
+    delete user['name'];
+
+    for (let key in user) {
+        alert(key + user[key])
+    }
+</script>
