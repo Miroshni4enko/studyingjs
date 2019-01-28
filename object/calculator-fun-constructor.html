@@ -1,0 +1,24 @@
+<script>
+    function Calculator() {
+        this.first = 0;
+        this.second = 0;
+        this.read = () => {
+            var numbers = prompt('Enter two numbers:');
+            var arrOfNumbers = numbers.split(' ');
+            this.first = +arrOfNumbers[0];
+            this.second = +arrOfNumbers[1];
+        };
+        this.sum = () => {
+            return this.first + this.second
+        };
+        this.mul = () => {
+            return this.first * this.second
+        }
+    }
+
+    var calculator = new Calculator();
+
+    calculator.read();
+    alert(calculator.sum());
+    alert(calculator.mul());
+</script>
