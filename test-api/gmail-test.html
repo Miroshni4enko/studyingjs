@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- Тег meta для указания кодировки -->
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+<p>Начало документа...</p>
+<button onclick="getTwitter()"></button>
+
+<script>
+    function getTwitter() {
+        getAjax('http://localhost:3030/api/auth/google_oauth2/?origin=http%3A%2F%2Flocalhost%3A63343%2F&omniauth_window_type=newWindow', function(data){ console.log(data); });
+    }
+
+    function getAjax(url, success) {
+        var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        xhr.open('GET', url);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
+        };
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest','Origin: http://localhost:63343/', 'Access-Control-Request-Method: POST', 'Access-Control-Request-Headers: Content-Type, Authorization', 'Access-Control-Allow-Origin');
+        xhr.send();
+        return xhr;
+    }
+
+    function postAjax(url, data, success) {
+        var params = typeof data == 'string' ? data : Object.keys(data).map(
+            function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+        ).join('&');
+
+        var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+        xhr.open('POST', url);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState>3 && xhr.status==200) { success(xhr.responseText); }
+        };
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
+        return xhr;
+    }
+</script>
+
+<p>...Конец документа</p>
+
+</body>
+
+</html>
